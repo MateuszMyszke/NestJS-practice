@@ -21,4 +21,14 @@ export class ProductsService {
     db.products.push(newProduct);
     return newProduct;
   }
+
+  public updateById(id: Product['id'], productData: Omit<Product, 'id'>): void {
+    db.products = db.products.filter((p) =>{
+      if(p.id === id){
+        return { ...p, ...productData };
+      }
+      return p;
+    });
+  }
+
 }
