@@ -3,7 +3,7 @@ import {IsInt, IsNotEmpty, IsString, Length, Min } from 'class-validator';
 
 export class UpdateProductDTO {
   @IsNotEmpty()
-  @Length(10, 20)
+  @Length(10, 30)
   name: string;
 
   @IsNotEmpty()
