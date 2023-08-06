@@ -21,13 +21,13 @@ export class OrdersService {
     });
   }
 
-  public create(orderData: Omit<Order, 'id' | 'createAt' | 'updateAt'>): Promise<Order> {
+  public create(orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>): Promise<Order> {
     return this.prismaService.order.create({
       data: orderData,
     });
   }
 
-  public updateById(id: Order['id'], orderData: Omit<Order, 'id' | 'createAt' | 'updateAt'>): Promise<Order> {
+  public updateById(id: Order['id'], orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>): Promise<Order> {
     return this.prismaService.order.update({
       where: { id },
       data: orderData,
