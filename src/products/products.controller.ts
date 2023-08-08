@@ -5,7 +5,7 @@ import { UpdateProductDTO } from './dtos/update-product.dto';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService) {this.productsService = productsService;}
   @Get('/')
   getAll(): any {
     return this.productsService.getAll();
@@ -45,12 +45,12 @@ export class ProductsController {
   @Get('/extended')
   getAllExtended(): any {
   return this.productsService.getAllExtended();
-}
+  }
 
-@Get('/extended/:id')
-async getExtendedById(@Param('id', new ParseUUIDPipe()) id: string) {
-  const prod = await this.productsService.getExtendedById(id);
-  if (!prod) throw new NotFoundException('Product not found');
-  return prod;
-}
+  @Get('/extended/:id')
+  async getExtendedById(@Param('id', new ParseUUIDPipe()) id: string) {
+    const prod = await this.productsService.getExtendedById(id);
+    if (!prod) throw new NotFoundException('Product not found');
+    return prod;
+  }
 }
